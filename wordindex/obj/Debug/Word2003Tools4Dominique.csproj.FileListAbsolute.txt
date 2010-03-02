@@ -1,0 +1,8 @@
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\obj\Debug\Word2003Tools4Dominique.Properties.Resources.resources
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\obj\Debug\Word2003Tools4Dominique.csproj.GenerateResource.Cache
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\bin\Debug\Fullenbaum.Word2003Tools4Dominique.dll
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\bin\Debug\Fullenbaum.Word2003Tools4Dominique.pdb
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\bin\Debug\Fullenbaum.Word2003Tools4Dominique.dll.manifest
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\obj\Debug\Fullenbaum.Word2003Tools4Dominique.dll
+C:\Users\Eric\Documents\Visual Studio 2008\Projects\Word2003Tools4Dominique\Word2003Tools4Dominique\obj\Debug\Fullenbaum.Word2003Tools4Dominique.pdb
