@@ -5,7 +5,7 @@
 @set _snpath="C:\Program Files\Microsoft SDKs\Windows\v6.1\Bin\sn.exe"
 
 @REM ___ Générer une nouvelle paire de clés publique-privée
-@REM %_snpath% -s Word2003Tools4Dominique.snk
+@REM %_snpath% -s wordindex.snk
 
 @REM ___ Afficher le jeton de la clé publique contenue dans la DLL
-%_snpath% -T bin\Release\Fullenbaum.Word2003Tools4Dominique.dll
+%_snpath% -T bin\Release\Fullenbaum.wordindex.dll

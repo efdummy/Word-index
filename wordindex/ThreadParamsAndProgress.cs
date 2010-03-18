@@ -190,7 +190,8 @@ namespace Word2003Tools4Dominique
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WorkersArray[0].CancelAsync();
+            for (int i=0; i<nbWorker; i++)
+                WorkersArray[i].CancelAsync();
             Close();
         }
 
