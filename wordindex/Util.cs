@@ -11,12 +11,12 @@ namespace Word2003Tools4Dominique
     static class Util
     {
         const string TEMP_DIR = "c:\\Temp";
-        const string RESULT_FILE_NAME = "Word2003Tools.result";
-        const string PROCESSED_OCCURRENCES_FILE_NAME = "Word2003Tools.ProcessedOccurrences";
-        const string RESULT_FILE_NAME_REJECTED = "Word2003Tools.rejected";
+        const string RESULT_FILE_NAME = "wordindex.Result";
+        const string PROCESSED_OCCURRENCES_FILE_NAME = "wordindex.ProcessedOccurrences";
+        const string RESULT_FILE_NAME_REJECTED = "wordindex.rejected";
         const string RESULT_FILE_EXT = ".txt";
-        const string FILTERS_FILE = "filterspatterns-fr.txt";
-        const string PATTERNS_FILE = "extractpatterns-fr.txt";
+        const string FILTERS_FILE = "wordindex.filterspatterns-fr.txt";
+        const string PATTERNS_FILE = "wordindex.extractpatterns-fr.txt";
 
         public const string REGULAR_EXPRESSION_HELP_URL1 = "http://en.wikipedia.org/wiki/Regular_expression";
         public const string REGULAR_EXPRESSION_HELP_URL2 = "http://msdn.microsoft.com/en-us/library/1400241x(VS.85).aspx";
@@ -244,4 +244,204 @@ namespace Word2003Tools4Dominique
 
 
     }
+
+    /* Most used french verbs (can be used as filters)
+
+    [a][b][a][n][d][o][n][n][e][a-z]*
+    [a][c][c][e][p][t][e][a-z]*
+    [a][c][c][o][m][p][a][g][n][e][a-z]*
+    [a][c][c][o][r][d][e][a-z]*
+    [a][c][h][e][t][e][a-z]*
+    [a][c][h][e][v][e][a-z]*
+    [a][d][r][e][s][s][e][a-z]*
+    [a][g][i][t][e][a-z]*
+    [a][i][d][e][a-z]*
+    [a][i][m][e][a-z]*
+    [a][j][o][u][t][e][a-z]*
+    [a][l][l][u][m][e][a-z]*
+    [a][m][e][n][e][a-z]*
+    [a][m][u][s][e][a-z]*
+    [a][n][n][o][n][c][e][a-z]*
+    [a][p][p][a][r][t][e][n][i][r]
+    [a][p][p][e][l][e][a-z]*
+    [a][p][p][o][r][t][e][a-z]*
+    [a][p][p][r][e][n][d][r][e]
+    [a][p][p][r][o][c][h][e][a-z]*
+    [a][p][p][u][y][e][a-z]*
+    [a][r][r][a][c][h][e][a-z]*
+    [a][r][r][ê][t][e][a-z]*
+    [a][r][r][i][v][e][a-z]*
+    [a][s][s][u][r][e][a-z]*
+    [a][t][t][a][c][h][e][a-z]*
+    [a][t][t][i][r][e][a-z]*
+    [a][v][a][n][c][e][a-z]*
+    [a][v][o][u][e][a-z]*
+    [b][a][i][s][s][e][a-z]*
+    [b][r][i][l][l][e][a-z]*
+    [b][r][i][s][e][a-z]*
+    [b][r][û][l][e][a-z]*
+    [c][a][c][h][e][a-z]*
+    [c][a][u][s][e][a-z]*
+    [c][e][s][s][e][a-z]*
+    [c][h][a][n][g][e][a-z]*
+    [c][h][a][n][t][e][a-z]*
+    [c][h][a][r][g][e][a-z]*
+    [c][h][e][r][c][h][e][a-z]*
+    [c][o][m][m][e][n][c][e][a-z]*
+    [c][o][m][p][o][s][e][a-z]*
+    [c][o][m][p][t][e][a-z]*
+    [c][o][n][s][i][d][é][r][e][a-z]*
+    [c][o][n][t][i][n][u][e][a-z]*
+    [c][o][u][c][h][e][a-z]*
+    [c][o][u][l][e][a-z]*
+    [c][o][u][p][e][a-z]*
+    [c][r][a][i][n][d][r][e]
+    [c][r][é][e][a-z]*
+    [c][r][i][e][a-z]*
+    [d][a][n][s][e][a-z]*
+    [d][é][c][i][d][e][a-z]*
+    [d][é][c][l][a][r][e][a-z]*
+    [d][e][m][a][n][d][e][a-z]*
+    [d][e][m][e][u][r][e][a-z]*
+    [d][é][s][i][r][e][a-z]*
+    [d][e][v][i][n][e][a-z]*
+    [d][i][r][i][g][e][a-z]*
+    [d][i][s][t][i][n][g][u][e][a-z]*
+    [d][o][n][n][e][a-z]*
+    [d][o][u][t][e][a-z]*
+    [d][r][e][s][s][e][a-z]*
+    [d][u][r][e][a-z]*
+    [é][c][h][a][p][p][e][a-z]*
+    [é][c][l][a][i][r][e][a-z]*
+    [é][c][l][a][t][e][a-z]*
+    [é][c][o][u][t][e][a-z]*
+    [é][l][e][v][e][a-z]*
+    [e][m][b][r][a][s][s][e][a-z]*
+    [e][m][m][e][n][e][a-z]*
+    [e][m][p][ê][c][h][e][a-z]*
+    [e][m][p][l][o][y][e][a-z]*
+    [e][m][p][o][r][t][e][a-z]*
+    [e][n][g][a][g][e][a-z]*
+    [e][n][l][e][v][e][a-z]*
+    [e][n][t][o][u][r][e][a-z]*
+    [e][n][t][r][a][î][n][e][a-z]*
+    [e][n][t][r][e][a-z]*
+    [e][n][v][o][y][e][a-z]*
+    [é][p][r][o][u][v][e][a-z]*
+    [e][s][p][é][r][e][a-z]*
+    [e][s][s][a][y][e][a-z]*
+    [é][t][o][n][n][e][a-z]*
+    [é][v][i][t][e][a-z]*
+    [e][x][a][m][i][n][e][a-z]*
+    [e][x][i][g][e][a-z]*
+    [e][x][i][s][t][e][a-z]*
+    [e][x][p][l][i][q][u][e][a-z]*
+    [e][x][p][r][i][m][e][a-z]*
+    [f][e][r][m][e][a-z]*
+    [f][i][x][e][a-z]*
+    [f][o][r][c][e][a-z]*
+    [f][o][r][m][e][a-z]*
+    [f][r][a][p][p][e][a-z]*
+    [g][a][g][n][e][a-z]*
+    [g][a][r][d][e][a-z]*
+    [g][l][i][s][s][e][a-z]*
+    [h][a][b][i][t][e][a-z]*
+    [h][é][s][i][t][e][a-z]*
+    [i][g][n][o][r][e][a-z]*
+    [i][m][a][g][i][n][e][a-z]*
+    [i][m][p][o][r][t][e][a-z]*
+    [i][m][p][o][s][e][a-z]*
+    [i][n][d][i][q][u][e][a-z]*
+    [i][n][s][t][a][l][l][e][a-z]*
+    [j][e][t][e][a-z]*
+    [j][o][u][e][a-z]*
+    [j][u][g][e][a-z]*
+    [l][e][v][e][a-z]*
+    [l][i][v][r][e][a-z]*
+    [m][a][n][g][e][a-z]*
+    [m][a][n][q][u][e][a-z]*
+    [m][a][r][c][h][e][a-z]*
+    [m][a][r][i][e][a-z]*
+    [m][a][r][q][u][e][a-z]*
+    [m][ê][l][e][a-z]*
+    [m][e][n][e][a-z]*
+    [m][o][n][t][e][a-z]*
+    [m][o][n][t][r][e][a-z]*
+    [n][o][m][m][e][a-z]*
+    [o][b][l][i][g][e][a-z]*
+    [o][b][s][e][a-z]*[v][e][a-z]*
+    [o][c][c][u][p][e][a-z]*
+    [o][s][e][a-z]*
+    [o][u][b][l][i][e][a-z]*
+    [p][a][r][l][e][a-z]*
+    [p][a][r][v][e][n][i][r]
+    [p][a][s][s][e][a-z]*
+    [p][a][y][e][a-z]*
+    [p][e][n][c][h][e][a-z]*
+    [p][é][n][é][t][r][e][a-z]*
+    [p][e][n][s][e][a-z]*
+    [p][l][a][c][e][a-z]*
+    [p][l][e][u][r][e][a-z]*
+    [p][o][r][t][e][a-z]*
+    [p][o][s][e][a-z]*
+    [p][o][s][s][é][d][e][a-z]*
+    [p][o][u][s][s][e][a-z]*
+    [p][r][é][p][a][r][e][a-z]*
+    [p][r][é][s][e][n][t][e][a-z]*
+    [p][r][ê][t][e][a-z]*
+    [p][r][i][e][a-z]*
+    [p][r][o][m][e][n][e][a-z]*
+    [p][r][o][n][o][n][c][e][a-z]*
+    [p][r][o][p][o][s][e][a-z]*
+    [p][r][o][u][v][e][a-z]*
+    [q][u][i][t][t][e][a-z]*
+    [r][a][c][o][n][t][e][a-z]*
+    [r][a][p][p][e][l][e][a-z]*
+    [r][e][f][u][s][e][a-z]*
+    [r][e][g][a][r][d][e][a-z]*
+    [r][e][l][e][v][e][a-z]*
+    [r][e][m][a][r][q][u][e][a-z]*
+    [r][e][m][o][n][t][e][a-z]*
+    [r][e][n][c][o][n][t][r][e][a-z]*
+    [r][e][n][t][r][e][a-z]*
+    [r][é][p][é][t][e][a-z]*
+    [r][e][p][o][s][e][a-z]*
+    [r][e][p][r][é][s][e][n][t][e][a-z]*
+    [r][e][s][p][i][r][e][a-z]*
+    [r][e][s][s][e][m][b][l][e][a-z]*
+    [r][e][s][t][e][a-z]*
+    [r][e][t][i][r][e][a-z]*
+    [r][e][t][o][u][r][n][e][a-z]*
+    [r][e][t][r][o][u][v][e][a-z]*
+    [r][é][v][e][i][l][l][e][a-z]*
+    [r][é][v][e][a-z]*
+    [r][o][u][l][e][a-z]*
+    [s][a][l][u][e][a-z]*
+    [s][a][u][v][e][a-z]*
+    [s][e][m][b][l][e][a-z]*
+    [s][é][p][a][r][e][a-z]*
+    [s][e][r][r][e][a-z]*
+    [s][o][n][g][e][a-z]*
+    [s][o][n][n][e][a-z]*
+    [s][o][u][f][f][l][e][a-z]*
+    [s][o][u][l][e][v][e][a-z]*
+    [t][e][n][t][e][a-z]*
+    [t][e][r][m][i][n][e][a-z]*
+    [t][i][r][e][a-z]*
+    [t][o][m][b][e][a-z]*
+    [t][o][u][c][h][e][a-z]*
+    [t][o][u][r][n][e][a-z]*
+    [t][r][a][î][n][e][a-z]*
+    [t][r][a][i][t][e][a-z]*
+    [t][r][a][v][a][i][l][l][e][a-z]*
+    [t][r][a][v][e][r][s][e][a-z]*
+    [t][r][e][m][b][l][e][a-z]*
+    [t][r][o][m][p][e][a-z]*
+    [t][r][o][u][v][e][a-z]*
+    [t][u][e][a-z]*
+    [v][o][l][e][a-z]* 
+     
+     * */
+
+
 }

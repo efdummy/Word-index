@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0CAE2233730E4D1CA201D89E30CD7405"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8232CF5053079592EB96B25309DD59E3"
         "OwnerKey" = "8:_E232374A445B9638E0B58BAD2569EAC8"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +35,12 @@
         {
         "MsmKey" = "8:_CB507FBEFBE77334A2C3F4F6B69EBD6D"
         "OwnerKey" = "8:_8232CF5053079592EB96B25309DD59E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D515116EE6024163A809982E1E6A9D0D"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -233,6 +245,34 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_486432633B4B4DDDBDCCD515FEF3FA00"
+            {
+            "Name" = "8:CustomActionFullTrustInstall.vbs"
+            "Condition" = "8:"
+            "Object" = "8:_D515116EE6024163A809982E1E6A9D0D"
+            "FileType" = "3:4"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_9FFF6CA4_4D80_4DE0_B731_66185E6C653E"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_8BBD0E2A8A49455992E3B1821090D101"
+            {
+            "Name" = "8:CustomActionFullTrustUninstall.vbs"
+            "Condition" = "8:"
+            "Object" = "8:_0CAE2233730E4D1CA201D89E30CD7405"
+            "FileType" = "3:4"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_183B7BB8_72E1_4D7C_81F0_7B3E24E313D0"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -256,6 +296,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CAE2233730E4D1CA201D89E30CD7405"
+            {
+            "SourcePath" = "8:CustomActionFullTrustUninstall.vbs"
+            "TargetName" = "8:CustomActionFullTrustUninstall.vbs"
+            "Tag" = "8:"
+            "Folder" = "8:_C54BAF2456B84882BBBA58173821F4F7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8232CF5053079592EB96B25309DD59E3"
             {
             "AssemblyRegister" = "3:1"
@@ -305,6 +365,26 @@
             "Register" = "3:2"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D515116EE6024163A809982E1E6A9D0D"
+            {
+            "SourcePath" = "8:CustomActionFullTrustInstall.vbs"
+            "TargetName" = "8:CustomActionFullTrustInstall.vbs"
+            "Tag" = "8:"
+            "Folder" = "8:_C54BAF2456B84882BBBA58173821F4F7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D5D9BA2C6C7D4256CBC845327F94F277"
@@ -550,13 +630,13 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Word Index"
         "ProductCode" = "8:{373C8B6D-223B-4F3B-AF70-537A7CC8567E}"
-        "PackageCode" = "8:{ED539099-33C9-485F-B1BB-599C8F35DBDF}"
+        "PackageCode" = "8:{351AC174-FC87-4A81-B007-B1788FA858A2}"
         "UpgradeCode" = "8:{E122206D-4A8D-4004-BAB4-BE19C3ED022B}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Fullenbaum"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

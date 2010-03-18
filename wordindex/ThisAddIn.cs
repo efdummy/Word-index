@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Microsoft.VisualStudio.Tools.Applications.Runtime;
 using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
+using System.IO;
 
 namespace Word2003Tools4Dominique
 {
@@ -14,11 +15,13 @@ namespace Word2003Tools4Dominique
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
-            //MessageBox.Show(ADDIN_TITLE);
             try
             {
-                // Création du menu
+                // Menu creation
                 menu = new CustomMenu(this.Application);
+                // Create default filters file
+                if (!File.Exists(Util.GetFiltersFilePath())) Util.GenerateDefaultFiltersFile();
+
             }
             catch (Exception exception)
             {
@@ -30,7 +33,7 @@ namespace Word2003Tools4Dominique
         {
             try
             {
-                // MessageBox.Show("Debug : Add-in shutdown", ADDIN_TITLE);
+                // Delete WordIndex menu
                 menu.Delete(this.Application);
             }
             catch (Exception exception)

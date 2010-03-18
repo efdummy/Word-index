@@ -187,74 +187,81 @@ namespace Word2003Tools4Dominique
             // Get all selected text
             Application appli = (Application)Ctrl.Application;
             string strText = "";
-            if (appli != null) if (appli.Selection != null) strText = appli.Selection.Text;
-            // Parse all words
-            List<string> wordListAll = new List<string>();
-            int rc1 = Commands.ExtractPattern(strText, WORDS_PATTERN, true, ref wordListAll);
-
-            // Multi-threading represents a boost only if there are many words to process
-            int count = wordListAll.Count;
-            int sliceSize;
-            int remainder;
-            ThreadParamsAndProgress.DoFinalizeThreadsWork DoFinalize = new ThreadParamsAndProgress.DoFinalizeThreadsWork(Commands.IndexFinalize);
-            if (count > 3) 
-            {
-                switch (Environment.ProcessorCount)
+            if (appli != null) if (appli.Selection != null)
                 {
-                    case 2:
-                        // Prepare parameters
-                        sliceSize = count / 2;
-                        Math.DivRem(count, 2, out remainder);
-                        List<string> wordlist21 = wordListAll.GetRange(0, sliceSize);
-                        List<string> wordlist22 = wordListAll.GetRange(sliceSize, sliceSize+remainder);
-                        ThreadParameters p21 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist21);
-                        ThreadParameters p22 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist22);
-                        // Start threads
-                        progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p21, p22);
-                        break;
-                    case 3:
-                        // Prepare parameters
-                        sliceSize = count / 3;
-                        Math.DivRem(count, 3, out remainder);
-                        List<string> wordlist31 = wordListAll.GetRange(0, sliceSize);
-                        List<string> wordlist32 = wordListAll.GetRange(sliceSize, sliceSize);
-                        List<string> wordlist33 = wordListAll.GetRange(2 * sliceSize, sliceSize + remainder);
-                        ThreadParameters p31 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist31);
-                        ThreadParameters p32 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist32);
-                        ThreadParameters p33 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist33);
-                        // Start threads
-                        progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p31, p32, p33);
-                        break;
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                        // Prepare parameters
-                        sliceSize = count / 4;
-                        Math.DivRem(count, 4, out remainder);
-                        List<string> wordlist41 = wordListAll.GetRange(0, sliceSize);
-                        List<string> wordlist42 = wordListAll.GetRange(sliceSize, sliceSize);
-                        List<string> wordlist43 = wordListAll.GetRange(2 * sliceSize, sliceSize);
-                        List<string> wordlist44 = wordListAll.GetRange(3 * sliceSize, sliceSize + remainder);
-                        ThreadParameters p41 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist41);
-                        ThreadParameters p42 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist42);
-                        ThreadParameters p43 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist43);
-                        ThreadParameters p44 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist44);
-                        // Start threads
-                        progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p41, p42, p43, p44);
-                        break;
-                    default:
+                    strText = appli.Selection.Text;
+                    // Parse all words
+                    List<string> wordListAll = new List<string>();
+                    int rc1 = Commands.ExtractPattern(strText, WORDS_PATTERN, true, ref wordListAll);
+
+                    // Multi-threading represents a boost only if there are many words to process
+                    int count = wordListAll.Count;
+                    int sliceSize;
+                    int remainder;
+                    ThreadParamsAndProgress.DoFinalizeThreadsWork DoFinalize = new ThreadParamsAndProgress.DoFinalizeThreadsWork(Commands.IndexFinalize);
+                    if (count > 3)
+                    {
+                        switch (Environment.ProcessorCount)
+                        {
+                            case 2:
+                                // Prepare parameters
+                                sliceSize = count / 2;
+                                Math.DivRem(count, 2, out remainder);
+                                List<string> wordlist21 = wordListAll.GetRange(0, sliceSize);
+                                List<string> wordlist22 = wordListAll.GetRange(sliceSize, sliceSize + remainder);
+                                ThreadParameters p21 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist21);
+                                ThreadParameters p22 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist22);
+                                // Start threads
+                                progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p21, p22);
+                                break;
+                            case 3:
+                                // Prepare parameters
+                                sliceSize = count / 3;
+                                Math.DivRem(count, 3, out remainder);
+                                List<string> wordlist31 = wordListAll.GetRange(0, sliceSize);
+                                List<string> wordlist32 = wordListAll.GetRange(sliceSize, sliceSize);
+                                List<string> wordlist33 = wordListAll.GetRange(2 * sliceSize, sliceSize + remainder);
+                                ThreadParameters p31 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist31);
+                                ThreadParameters p32 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist32);
+                                ThreadParameters p33 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist33);
+                                // Start threads
+                                progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p31, p32, p33);
+                                break;
+                            case 4:
+                            case 5:
+                            case 6:
+                            case 7:
+                            case 8:
+                                // Prepare parameters
+                                sliceSize = count / 4;
+                                Math.DivRem(count, 4, out remainder);
+                                List<string> wordlist41 = wordListAll.GetRange(0, sliceSize);
+                                List<string> wordlist42 = wordListAll.GetRange(sliceSize, sliceSize);
+                                List<string> wordlist43 = wordListAll.GetRange(2 * sliceSize, sliceSize);
+                                List<string> wordlist44 = wordListAll.GetRange(3 * sliceSize, sliceSize + remainder);
+                                ThreadParameters p41 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist41);
+                                ThreadParameters p42 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist42);
+                                ThreadParameters p43 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist43);
+                                ThreadParameters p44 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordlist44);
+                                // Start threads
+                                progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p41, p42, p43, p44);
+                                break;
+                            default:
+                                ThreadParameters p1 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordListAll);
+                                progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p1);
+                                break;
+                        }
+                    }
+                    else
+                    {
                         ThreadParameters p1 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordListAll);
                         progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p1);
-                        break;
+                    }
                 }
-            }
-            else
-            {
-                ThreadParameters p1 = new ThreadParameters(null, strText, WORDS_PATTERN, GetMinWordLength(), true, false, wordListAll);
-                progressForm.Start(Commands.DoExtractionForIndexFiltered, DoFinalize, p1);
-            }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show(Msg.MSG_NOTHING_FOUND_OR_NO_TEXT, ThisAddIn.ADDIN_TITLE);
+                }
         }
 
         private void menuCommand4_Click(Microsoft.Office.Core.CommandBarButton Ctrl, ref bool CancelDefault)
